@@ -13,12 +13,21 @@ env:
 
 permissions:
   id-token: write
+  contents: read
 
 jobs:
   promote:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug incoming payload
+        run: |
+          echo "Repository dispatch event received at $(date)"
+          echo "Event type: ${{ github.event.action || 'repository_dispatch' }}"
+          echo "Full client_payload:"
+          echo "${{ toJson(github.event.client_payload) }}"
+        shell: bash
+
       - name: Install Cloudsmith CLI
         uses: cloudsmith-io/cloudsmith-cli-action@v1.0.1
         with:
