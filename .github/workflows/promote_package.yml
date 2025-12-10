@@ -61,7 +61,7 @@ jobs:
           for ID in $IDS; do
           # Promote package using the identifier
           cloudsmith mv --yes \
-            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }}/$IDENTIFIER \
+            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }}/$ID \
             ${{ env.CLOUDSMITH_PRODUCTION_REPO }}
           done
         shell: bash
