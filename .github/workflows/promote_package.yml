@@ -1,6 +1,8 @@
 name: Promote Python Package
 
-on: workflow_dispatch
+on:
+  repository_dispatch:
+    types: [testresult]
 
 env:
   CLOUDSMITH_NAMESPACE: ${{ vars.CLOUDSMITH_NAMESPACE }}
