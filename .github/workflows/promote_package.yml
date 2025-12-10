@@ -35,14 +35,14 @@ jobs:
             exit 1
           fi
           cloudsmith tag add \
-            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }}\
+            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }} \
             "$IDENT" \
             ${{ env.TAG_NAME}}
             
       - name: Promote all ready-for-production packages
         run: |
           PKG_DATA=$(cloudsmith list package \
-            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }}\
+            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }} \
             -q "tag:${{ env.TAG_NAME}}" -F json)
 
           IDS=$(echo "$PKG_DATA" | jq -r '.data[].identifier_perm')
