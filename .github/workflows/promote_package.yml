@@ -42,8 +42,7 @@ jobs:
             exit 1
           fi
           cloudsmith tag add \
-            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }} \
-            "$IDENT" \
+            ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_STAGING_REPO }}/"$IDENT" \
             ${{ env.TAG_NAME}}
             
       - name: Promote all ready-for-production packages
